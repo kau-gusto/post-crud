@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FormStyled } from "../../App";
+import { Button } from "../../assets/Button";
+import { Container } from "../../assets/Container";
 import { useInEditingContext } from "../../context/InEditingContext";
 import { usePostsContext } from "../../context/postsContext";
 import { PostType } from "../../types/post";
@@ -9,6 +11,7 @@ const PostStyledForm = styled(FormStyled)`
   margin: var(--size-2);
   background-color: var(--surface-2);
   border: var(--border-size-1) var(--gray-9) solid;
+  flex: 1;
 
   label {
     width: var(--size-8);
@@ -34,7 +37,7 @@ export default function PostComponentEditing({ post }: { post: PostType }) {
       },
     })
       .then((response) => response.json())
-      .then((json: PostType) => {
+      .then((_: PostType) => {
         setPosts(
           posts.map((localPost) => {
             if (localPost.id === post.id) {
@@ -52,37 +55,50 @@ export default function PostComponentEditing({ post }: { post: PostType }) {
   }
 
   return (
-    <PostStyledForm
-      onSubmit={(e) => {
-        e.preventDefault();
-        updatePost();
-      }}
-    >
-      <div>
-        <label htmlFor="titlePost">Title</label>
-        <input
-          type="text"
-          name="title"
-          id="titlePost"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value ?? "");
-          }}
-        />
-      </div>
-      <div>
-        <label htmlFor="bodyPost">Body</label>
-        <input
-          type="text"
-          name="body"
-          id="bodyPost"
-          value={body}
-          onChange={(e) => {
-            setBody(e.target.value ?? "");
-          }}
-        />
-      </div>
-      <button>submit</button>
-    </PostStyledForm>
+    <Container>
+      <PostStyledForm
+        onSubmit={(e) => {
+          e.preventDefault();
+          updatePost();
+        }}
+      >
+        <div>
+          <label htmlFor="titlePost">Title</label>
+          <input
+            type="text"
+            name="title"
+            id="titlePost"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value ?? "");
+            }}
+          />
+        </div>
+        <div>
+          <label htmlFor="bodyPost">Body</label>
+          <input
+            type="text"
+            name="body"
+            id="bodyPost"
+            value={body}
+            onChange={(e) => {
+              setBody(e.target.value ?? "");
+            }}
+          />
+        </div>
+        <button>submit</button>
+      </PostStyledForm>
+      <Button
+        color="gray"
+        intensity={5}
+        top_left
+        bottom_left
+        onClick={() => {
+          setInEditing(0);
+        }}
+      >
+        cancel
+      </Button>
+    </Container>
   );
 }
