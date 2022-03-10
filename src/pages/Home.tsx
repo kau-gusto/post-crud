@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import Post from "../components/Post/PostComponent";
+import { useInEditingContext } from "../context/InEditingContext";
 import { usePostsContext } from "../context/postsContext";
 import { PostType } from "../types/post";
 
@@ -34,7 +35,7 @@ const NavStyled = styled.nav`
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [inEditing, setInEditing] = useState(0);
+  const [, setInEditing] = useInEditingContext();
   const [totalPages, setTotalPages] = useState(0);
   const [posts, setPosts] = usePostsContext();
   const [page, setPage] = useState(() => {
@@ -76,6 +77,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    setInEditing(0);
     const numLocalPage = parseInt(searchParams.get("page") ?? "1");
     if (page !== numLocalPage) {
       setSearchParams({ page: page.toString() });

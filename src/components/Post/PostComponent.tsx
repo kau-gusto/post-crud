@@ -96,18 +96,17 @@ function PostComponent({ post, onDelete }: paramsType) {
           delete
         </button>
         <Link to={`/post/${post.id}`}>post</Link>
-        {inEditing === 0 ? (
-          <button
-            className="edit"
-            onClick={() => {
-              if (inEditing !== post.id) {
-                setInEditing(post.id);
-              }
-            }}
-          >
-            edit
-          </button>
-        ) : null}
+
+        <button
+          className="edit"
+          onClick={() => {
+            if (inEditing !== post.id) {
+              setInEditing(post.id);
+            }
+          }}
+        >
+          edit
+        </button>
       </div>
     </PostStyled>
   );
