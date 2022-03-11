@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { StateType } from "../types/state";
 
-const inEditingContext = createContext<StateType<number>>([0, () => {}]);
+const InEditingContext = createContext<StateType<number>>([0, () => {}]);
 
 export default function InEditingContextProvider({
   children,
@@ -10,12 +10,12 @@ export default function InEditingContextProvider({
 }) {
   const [inEditing, setInEditing] = useState(0);
   return (
-    <inEditingContext.Provider value={[inEditing, setInEditing]}>
+    <InEditingContext.Provider value={[inEditing, setInEditing]}>
       {children}
-    </inEditingContext.Provider>
+    </InEditingContext.Provider>
   );
 }
 
 export function useInEditingContext() {
-  return useContext(inEditingContext);
+  return useContext(InEditingContext);
 }
