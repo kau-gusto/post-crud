@@ -10,13 +10,13 @@ import { StateType } from "../types/state";
 
 type PostContextType = StateType<PostType[]>;
 
-interface paramsType {
+interface ParamsType {
   children: ReactElement;
 }
 
 const PostsContext = createContext<PostContextType>([[], () => {}]);
 
-export default function PostsProvider({ children }: paramsType) {
+export default function PostsProvider({ children }: ParamsType) {
   const [posts, setPosts] = useState<PostType[]>([]);
 
   function requestPosts() {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { StateType } from "../types/state";
 
 export default function usePersistedState<T>(
   key: string,
   initialState: T
-): [T, React.Dispatch<React.SetStateAction<T>>] {
+): StateType<T> {
   const [state, setState] = useState<T>((): T => {
     const storageValue = localStorage.getItem(key);
 

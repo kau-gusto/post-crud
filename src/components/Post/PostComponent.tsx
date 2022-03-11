@@ -5,7 +5,7 @@ import { useInEditingContext } from "../../context/InEditingContext";
 import { PostType } from "../../types/post";
 import PostComponentEditing from "./PostComponentEditing";
 
-interface paramsType {
+interface ParamsType {
   post: PostType;
   onDelete: (id: number) => void;
 }
@@ -75,7 +75,7 @@ const PostStyled = styled.div`
   }
 `;
 
-function PostComponent({ post, onDelete }: paramsType) {
+function PostComponent({ post, onDelete }: ParamsType) {
   const [inEditing, setInEditing] = useInEditingContext();
   if (inEditing === post.id) {
     return <PostComponentEditing post={post} />;
