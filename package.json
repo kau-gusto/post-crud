@@ -5,9 +5,9 @@
   "homepage": "http://kauaug.github.io/post-crud",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b build",
+    "deploy": "npm run build && node ./gh-pages.mjs",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && touch dist/.nojekyll",
     "preview": "vite preview"
   },
   "dependencies": {
