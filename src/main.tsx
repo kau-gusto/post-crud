@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <PostsProvider>
-      <Router>
+      <Router basename="/post-crud/">
         <App />
         <InEditingContextProvider>
           <Routes>
