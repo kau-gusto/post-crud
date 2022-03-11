@@ -2,7 +2,10 @@
   "name": "post-crud",
   "private": true,
   "version": "0.0.0",
+  "homepage": "http://kauaug.github.io/post-crud",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -15,10 +18,12 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/styled-components": "^5.1.24",
     "@vitejs/plugin-react": "^1.0.7",
+    "gh-pages": "^3.2.3",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
   }

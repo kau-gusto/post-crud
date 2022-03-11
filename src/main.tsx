@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <PostsProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <App />
         <InEditingContextProvider>
           <Routes>
